@@ -9,11 +9,11 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_core.events import SlotSet
+from rasa_sdk.events import SlotSet, AllSlotsReset, Restarted
 from actions.extractTierCities import TierCities
 
 
-class ActionHelloWorld(Action):
+class ActionValidateCity(Action):
 
     def __init__(self):
         self.TierCitiesI = TierCities()
@@ -29,3 +29,38 @@ class ActionHelloWorld(Action):
         loc,val = self.TierCitiesI.validate_city(loc)
 
         return [SlotSet('location',loc),SlotSet('is_location_valid',val)]
+
+class ActionSearchRestaurants(Action):
+    def name(self):
+        return 'action_search_restaurant'
+
+    def run(self, dispatcher, tracker, domain):
+        cuisine = tracker.get_slot('cuisine')
+        response="no results"
+
+        # todo: the logic of searching restaurants goes here
+        return [SlotSet('cuisine',cuisine),SlotSet('is_result_found',response!="no results")]
+
+class ActionSendMail(Action):
+
+    def name(self):
+        return "action_send_mail"
+
+    def run(self):
+        # todo: the logic of sending mail goes here
+        return []
+
+class ActionResetSlots(Action):
+    def name(self):
+        return 'action_perform_reset'
+
+    def run(self, dispatcher, tracker, domain):
+        #AllSlotsReset()
+        return [AllSlotsReset()]
+
+class ActionRestarted(Action):
+    def name(self):
+        return 'action_restarted'
+
+    def run(self, dispatcher, tracker, domain):
+        return[Restarted()]

@@ -28,8 +28,14 @@ actions:
   - utter_noresults
   - utter_ask_price
   - utter_ask_mail
+  - utter_ask_ifmail
   - utter_email_Sent
   - utter_email_error
+  - action_validate_city
+  - action_search_restaurant
+  - action_send_mail
+  - action_perform_reset
+  - action_restarted
 
 slots:
     location:
@@ -51,7 +57,7 @@ slots:
     is_location_valid:
       type: bool
       initial_value: false
-    is_email_given:
+    is_result_found:
       type: bool
       initial_value: false
     
@@ -123,6 +129,12 @@ responses:
   utter_email_error:
   - "Sorry, something went wrong, could not send the email."
   - "Email could not be sent, apologise for the inconvience."
+
+  utter_ask_ifmail:
+  - "Shall I send you the top 10 results via email?"
+  - "Would you like me to send the top 10 results via email?"
+  - "Would you like to have the top 10 results emailed to you?"
+  - "Would you be interested in having top 10 results emailed to you?"
 
 session_config:
   session_expiration_time: 60
