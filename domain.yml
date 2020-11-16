@@ -1,0 +1,129 @@
+version: "2.0"
+
+intents:
+  - greet
+  - thankyou
+  - deny
+  - affirm
+  - goodbye
+  - inform
+  - restaurant_search
+
+entities:
+  - pincode
+  - location
+  - price
+  - cuisine
+  - emailId
+  - people_cnt
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_nontier
+  - utter_default
+  - utter_ask_cuisine
+  - utter_ask_location
+  - utter_thanks
+  - utter_noresults
+  - utter_ask_price
+  - utter_ask_mail
+  - utter_email_Sent
+  - utter_email_error
+
+slots:
+    location:
+      type: text
+      initial_value: "unknown"
+    cuisine:
+      type: text
+      initial_value: "unknown"
+    price:
+      type: list
+    emailId:
+      type: text
+      initial_value: "unknown"
+    pincode:
+      type: text
+    people_cnt:
+      type: float
+      initial_value: 0.0
+    is_location_valid:
+      type: bool
+      initial_value: false
+    is_email_given:
+      type: bool
+      initial_value: false
+    
+responses:
+  utter_greet:
+  - text: "Hey there! How are you?. This is RestoBot. I can help u with your restaurant search"
+  - text: "Howdy, I am RestoBot, here to help you with restaurant search."
+  - text:"Hello there, RestoBot here. I can assist you with restaurant search."
+  
+  utter_goodbye:
+  - "RestoBot signing off.. Nice talking to you"
+  - "Good bye, was pleasure helping you"
+  - "It was great helping you with restaurant search, see you soon"
+  - "Untill next time, Chao!!"
+  
+  utter_nontier:
+  - "Unfortunately, we do not operate in the requested city yet"
+  
+  utter_default:
+  - "Sorry, i did not understand. Can you please rephrase?"
+  
+  utter_ask_cuisine:
+  - text: "What kind of cuisine would you like?"
+      buttons:
+      - title: "Chinese"
+        payload: "chinese"
+      - title: "Mexican"
+        payload: "mexican"
+      - title: "Italian"
+        payload: "italian"
+      - title: "American"
+        payload: "american"
+      - title: "South Indian"
+        payload: "south indian"
+      - title: "North Indian"
+        payload: "north indian"
+  
+  utter_ask_location:
+  - "Please provide me the location."
+  - "Can u please help me with the location?"
+  
+  utter_thanks:
+  - "Was a pleasure helping you. Is there anything else i can assist you with?"
+  
+  utter_noresults:
+  - "Sorry for that. Is there anything else i can help you with?"
+  
+  utter_ask_price:
+  - text: "What price range are you looking at?"
+      buttons:
+      - title: "Lesser than Rs. 300"
+        payload: "Lesser than Rs. 300"
+      - title: "Rs. 300 to 700"
+        payload: "Rs. 300 to 700"
+      - title: "More than Rs. 700"
+        payload: "More than Rs. 700" 
+        
+  utter_ask_mail:
+  - "Could you please share your email address then?"
+  - "What is your email address?"
+  - "Please provide your email address"
+  - "Provide your email address please"
+  - "Please enter your email address"
+  
+  utter_email_Sent:
+  - "The details have been emailed to you"
+  - "Email has been sent to the address provided by you"
+  
+  utter_email_error:
+  - "Sorry, something went wrong, could not send the email."
+  - "Email could not be sent, apologise for the inconvience."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

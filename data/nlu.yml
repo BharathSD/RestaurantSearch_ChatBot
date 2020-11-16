@@ -1,0 +1,368 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hellooo
+    - hey i hope you are doing good
+    - hi wassup
+    - hi whatsup
+    - hii
+    - hey whatsup
+    - hey bot
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - bbye
+    - bye tc
+    - bye take care see you soon
+    - bye talk to you later
+    - bbye nice talking to u
+    - quit
+    - i quit
+    - take care
+
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes please
+    - ya
+    - yeah
+    - oh great
+    - yes thanks
+    - yes ofcourse
+    - yeah go ahead
+    - yeah it helped. thanks
+    - yeah why not
+    - i will
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: thankyou
+  examples: |
+    - Thanks
+    - i really appreciate it
+    - many thanks
+    - thanks a lot
+    - Thanks a ton
+    - you are a saviour
+    -  what would i do without you
+
+- intent: inform
+  examples: |
+    - Kindly send the email to [sanyog.yadav@gmx.net](emailId)
+    - [sanesanyo@gmail.com](emailId)
+    - please send the mail to [santhosh.prakash@gmail.com](emailId)
+    - send it to [sara.topmann@gmx.de](emailId)
+    - [snooze_with_ooze@yahoo.com](emailId)
+    - send email to [randomdude123@hotmail.de](emailId)
+    - please send an email to [sanyogiitd@yahoo.co.in](emailId)
+    - my email address is [sara.topmann@gmx.de](emailId)
+    - my email address is [willywonka@outlook.de](emailId)
+    - my email is [sarah.golding@yahoo.co.uk](emailId)
+    - [random.dude@yahoo.co.uk](emailId)
+    - send it to [big.dude1984@yahoo.co.in](emailId)
+    - please send the email to [high_stakes@web.de](emailId)
+    - [santhosh.prakash@gmail.com](emailId)
+    - My email id is [santhosh@gmail.com](emailId)
+    - email is [santhoshprakash@gmail.com](emailId)
+    - address is [santu_sam@yahoo.com](emailId)
+    - [surprise@me.in](emailId)
+    - [chingchang@rediff.co.in](emailId)
+    - [awesome@notsoawesome.me](emailId)
+    - [heamanth@us.us](emailId)
+    - [sanesanyo@amsterdam.de](emailId)
+    - yes please send the mail to [iamcooldude@gmail.com](emailId)
+    - [South Indian](cuisine)
+    - [North Indian](cuisine)
+    - [Italian](cuisine)
+    - [Chinese](cuisine)
+    - [Lithuania](location)
+    - Oh, sorry, in [Mysore](location)
+    - in [delhi](location)
+    - in [Bombay](location)
+    - [american](cuisine)
+    - [mexican](cuisine)
+    - in [goa](location)
+    - Oh, sorry, i'm looking in [mumbai](location)
+    - [getThemail@yahoo.co.in](emailId)
+    - in [new delhi](location)
+    - anywhere in the west [mumbai](location)
+    - in [mysore](location)
+    - looking for table for [5](people_cnt)
+    - [2](people_cnt) members
+    - more than [five](people_cnt)
+    
+- intent: restaurant_search
+  examples: |
+    - I want to grab lunch
+    - [pizza](cuisine) places in [siliguri](location)
+    - looking to grab lunch in [400036)(pincode)
+    - i'm looking for a place to eat
+    - I am searching for a dinner spot
+    - i'm looking for a place in the north of town
+    - show me [chinese](cuisine) restaurants
+    - show me chines restaurants in the [north](location)
+    - i am looking for an [indian](cuisine) spot called olaolaolaolaolaola
+    - search for restaurants
+    - I am looking for [asian fusion](cuisine) food
+    - I am looking a restaurant in [29432](location)
+    - looking for restaurants in [110001](pincode)
+    - I am looking for some restaurants in [Delhi](location).
+    - I am looking for some restaurants in [delhi](location)
+    - I am looking for [mexican indian fusion](cuisine)
+    - I am looking for a restaurant in [Delhi](location)
+    - I am looking for a [chinese](cuisine) restaurant in [Delhi](location) for a budget of [300](price) to [700](price)
+    - Looking for [north indian](cuisine) restaurant in [pune](location) for a [max](price) budget of [700](price)
+    - I am looking for an [american](cuisine) restaurant in [delhi](location).
+    - I am looking for an [italian](cuisine) restaurant in [bangalore](location).
+    - I want to eat [chinese](cuisine)
+    - I am looking for a restaurant in [delhi](location) for a budget of [700](price)
+    - I am looking for restaurant in [jaipur](location).
+    - I am looking for restaurants in [dehradun](location).
+    - Could you help me find some [chinese](cuisine) restaurants in [calcutta](location)?
+    - Italian restaturants in [kolkata](location)
+    - I am looking for [chainese](cuisine) restaurant in [bombay](location)
+    - sure, could you look for some [america](cuisine) restaurants in range of [300](price) to [400](price)?
+    - Looking for some restaurants in [rourkela](location)
+    - looking for some good spots
+    - I want to eat [tacos](cuisine)
+    - I want to eat [burgers](cuisine)
+    - I want to eat [burger](cuisine)
+    - I am looking for an [italian](cuisine) restaurant in [mumbai](location) in range of [400](price) and [800](price)
+    - I am Hungry
+    - I want food
+    - Find restaurants
+    - restaurants
+    - Place to eat
+    - Find me some restaurants
+    - show me a [mexican](cuisine) place in the [centre](location)
+    - can you book a table in [rome](location) in a moderate price range with [british](cuisine) food for four people
+    - [central](location) [indian](cuisine) restaurant
+    - please help me to find restaurants in [pune](location)
+    - search for restaurants in [bangalore](location)
+    - Find a [chinese](cuisine) restaurant in [bangalore](location)
+    - Food place in [bangalore](location)
+    - [Italian](cuisine) good place in [Bangalore](location)
+    - Good place to eat
+    - Find a place in [bengaluru](location) which serves [Chinese](cuisine) food
+    - can you book a table in [Pune](location) in a high price range with [Indian](cuisine) food for [two](people_cnt) people
+    - table for [2](people_cnt)
+    - low price food for quick bite
+    - Moderate place for [three](people_cnt)
+    - Find a good [biryani](cuisine) place
+    - Find me a [cafe](cuisine)
+    - find me a [veg](cuisine) restaurant nearby
+    - Good resturant for [chinese](cuisine) in [bangalore](location)
+    - Cheap restaurant in [bangalore](location) for [biryani](cuisine)
+    - [Italian](cuisine) in [Pune](location)
+    - Top restaurant in [Bangalore](location)
+    - Find me an expensive restaurant to dine
+    - Book a cheap restaurant for breakfast
+    - [pizza](cuisine) place in [tumkur](location)
+    - Great food place in [Pune](location)
+    - Find me a high food place in [Goa](location)
+    - Find a Fine dining in [Mumbai](location)
+    - Fine dinning in [amritsar](location)
+    - I would like to eat some [burgers](cuisine)
+    - I want to eat some [pizza](cuisine)
+    - can u help with restaturants ?
+    - I would like to eat [burgers](cuisine)
+    - I want to eat [italian](cuisine) food
+    - Looking for restaurants in [ellanabad](location).
+    - I am looking for a place to eat in [madurai](location)
+    - Looking for grub in [nashik](location)
+    - looking for a restaurant which is comfortable for [four](people_cnt) people
+    - want to find a restaurant in [kalaburagi](location)
+    - looking for restaurants around [560027](pincode)
+    - find restaturants in [570001](pincode)
+    - can you find some top rated restaturants in [ahmedabad](location) and send the mail to [send_mail_tome@yahoo.co.in](emailId)
+    - Me and my 4(people_cnt) friends are looking for a [chinese](cuisine) food.
+    - Food places in [New Delhi](location) please.
+    - Awesome restaturants in [bombay](location) for [Italian](cuisine)
+    - pocket friendly restaturants in [palakkad](location)
+    - do u know about restaurants ?
+    - help me with restaurant search please
+    - what do u know about restaurants ?
+    - where will i get good [biriyani](cuisine) in [ajmer](location)
+    - send a mail to [abc2020@gmail.com](emailId) with all information about top [pizza](cuisine) places in [bangalore](location)
+    - Find me restaurants in [madras](location) with comfortable seating arrangements for [6](people_cnt) people.
+
+    
+- synonym: bengaluru
+  examples: |
+    - Bangalore
+    - Bengaluru
+    - bangalore
+
+- synonym: mysore
+  examples: |
+    - Mysore
+    - Mysuru
+    - mysuru
+    
+- synonym: chennai
+  examples: |
+    - madras
+    - Chennai
+    
+- synonym: Delhi
+  examples: |
+    - New Delhi
+    - dilli
+    - New dilli
+    - delhi
+    - nayi dilli
+
+- synonym: Kolkata
+  examples: |
+    - Calcutta
+
+- synonym: Mumbai
+  examples: |
+    - Navi mumbai
+    - Navi Mumbai
+    - Naya Bombay
+    - Bombay
+
+- synonym: Tiruchirapalli
+  examples: |
+    - Trichinapoly
+
+- synonym: vadodara
+  examples: |
+    - baroda
+    - Vadodara
+
+- synonym: kochi
+  examples: |
+    - cochin
+    - Cochin
+    
+- synonym: chinese
+  examples: |
+    - chines
+    - Chinese
+    - Chines
+ 
+- synonym: mid
+  examples: |
+    - moderate
+    - medium
+    - middle sized
+    
+- synonym: high
+  examples: |
+    - top
+    - classy
+    - expensive
+    
+- synonym: low
+  examples: |
+    - low budget
+    - pocket friendly
+    
+- synonym: vegetarian
+  examples: |
+    - veggie
+    - vegg
+    - veg
+    - vegan
+    
+- synonym: Italian
+  examples: |
+    - pizza
+    - tacos
+    - pizzas
+
+- synonym: south indian
+  examples: |
+    - biriyani
+    - South indian
+    - south Indian
+    - south idian
+    - sout indian
+ 
+- synonym: "1"
+  examples: |
+    - one
+    - One
+- synonym: "2"
+  examples: |
+    - two
+    - Two
+
+- synonym: "3"
+  examples: |
+    - three
+    - Three
+
+- synonym: "4"
+  examples: |
+    - four
+    - Four
+
+- synonym: "5"
+  examples: |
+    - five
+    - Five
+
+- synonym: "6"
+  examples: |
+    - six
+    - Six
+    
+- regex: greet
+  examples: |
+    - \bhey\b
+    - \bhi\b
+    - \bhowdy\b
+    
+- regex: pincode
+  examples: |
+    - \d{6}
+    
+- regex: emailId
+  examples: |
+    - ^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$
+
+- lookup: location
+  examples: |
+    - data/citiesofIndia.txt
