@@ -11,6 +11,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset, Restarted
 from actions.extractTierCities import TierCities
+from actions.eMail import Email
 
 
 class ActionValidateCity(Action):
@@ -46,8 +47,14 @@ class ActionSendMail(Action):
     def name(self):
         return "action_send_mail"
 
-    def run(self):
-        # todo: the logic of sending mail goes here
+    def run(self, dispatcher, tracker, domain):
+        EmailI = Email('Body.txt', tracker.get_slot("location").title())
+        retVal = EmailI.sendMail(tracker.get_slot('emailId'))
+
+        if retVal is 0:
+            dispatcher.utter_template("utter_email_Sent", tracker)
+        else:
+            dispatcher.utter_template("utter_email_error", tracker)
         return []
 
 class ActionResetSlots(Action):

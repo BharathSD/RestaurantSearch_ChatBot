@@ -1,0 +1,11 @@
+Dear Restobot User,
+
+Thank you for your interest in Restaurant Search using Restobot - Your Restaurant search assistant.
+Please find below the restaurant recommendations:
+
+%s
+
+Bon Appetit... Looking forward to assist you again.
+
+Regards,
+Restobot
