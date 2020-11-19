@@ -112,6 +112,8 @@ nlu:
     - yes please send the mail to [iamcooldude@gmail.com](emailId)
     - [South Indian](cuisine)
     - [North Indian](cuisine)
+    - i am looking in range [300](price) to [700](price)
+    - [greater than](price) [700](price)
     - [Italian](cuisine)
     - [Chinese](cuisine)
     - [Lithuania](location)
@@ -120,6 +122,7 @@ nlu:
     - in [Bombay](location)
     - [american](cuisine)
     - [mexican](cuisine)
+    - [more](price) than [700](price)
     - in [goa](location)
     - Oh, sorry, i'm looking in [mumbai](location)
     - [getThemail@yahoo.co.in](emailId)
@@ -129,6 +132,7 @@ nlu:
     - looking for table for [5](people_cnt)
     - [2](people_cnt) members
     - more than [five](people_cnt)
+    - around [300](price)
     
 - intent: restaurant_search
   examples: |

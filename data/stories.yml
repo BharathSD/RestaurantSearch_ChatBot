@@ -25,6 +25,7 @@ stories:
     - price: ["more","300"]
   - action: action_search_restaurant
   - slot_was_set:
+    - cuisine: "chinese"
     - is_result_found: true
   - action: utter_ask_ifmail
   - intent: affirm
@@ -54,6 +55,308 @@ stories:
     - is_location_valid: false
   - action: utter_nontier
   - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with just restaurant search intent
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "Mumbai"
+    - cuisine: "chinese"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "Mumbai"
+    - is_location_valid: true
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["300", "700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "chinese"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: affirm
+  - action: utter_ask_mail
+  - intent: inform
+    entities:
+    - emailId: "sendmeamail123@yahoo.co.in"
+  - action: action_send_mail
+  - action: utter_email_Sent
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with all data in query
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - cuisine: "chinese"
+    - location: "Mumbai"
+    - price: ["more","700"]
+  - slot_was_set:
+    - location: "Mumbai"
+    - is_location_valid: true
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "chinese"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: affirm
+  - action: utter_ask_mail
+  - intent: inform
+    entities:
+    - emailId: "sendmeamail123@yahoo.co.in"
+  - action: action_send_mail
+  - action: utter_email_Sent
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with just restaurant search intent without mail
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "lucknow"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "lucknow"
+    - is_location_valid: true
+  - action: utter_ask_cuisine
+  - intent: inform
+    entities:
+    - cuisine: "mexican"
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["300", "700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "mexican"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: deny
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search cuisine, location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mumbai"
+    - cuisine: "chinese"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mumbai"
+    - is_location_valid: true
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["300", "700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "chinese"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: deny
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search cuisine, location, price greater than 700
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mumbai"
+    - cuisine: "chinese"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mumbai"
+    - is_location_valid: true
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["more", "700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "chinese"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: deny
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mumbai"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mumbai"
+    - is_location_valid: true
+  - action: utter_ask_cuisine
+  - intent: inform
+    entities:
+    - cuisine: "chinese"
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["more", "700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "chinese"
+    - is_result_found: true
+  - action: utter_ask_ifmail
+  - intent: deny
+  - intent: goodbye
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search invalid location and cuisine
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mirzapur"
+    - cuisine: "chinese"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mirzapur"
+    - is_location_valid: false
+  - action: utter_nontier
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search invalid location
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "wasseypur"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "wasseypur"
+    - is_location_valid: false
+  - action: utter_nontier
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search invalid location as input
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: "wasseypur"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "wasseypur"
+    - is_location_valid: false
+  - action: utter_nontier
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search, invalid cuisine input
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "delhi"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "delhi"
+    - is_location_valid: true
+  - action: utter_ask_cuisine
+  - intent: inform
+    entities:
+    - cuisine: "japanese"
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["more","700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "japanese"
+    - is_result_found: false
+  - action: utter_noresults
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search, with invalid cuisine input
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mumbai"
+    - cuisine: "moroccan"
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mumbai"
+    - is_location_valid: true
+  - action: utter_ask_price
+  - intent: inform
+    entities:
+    - price: ["300","700"]
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "moroccan"
+    - is_result_found: false
+  - action: utter_noresults
+  - action: utter_goodbye
+  - action: action_perform_reset
+  - action: action_restarted
+
+- story: story with restaurant search with location valid, cost vcalid and with invalid cuisine input
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: "mumbai"
+    - cuisine: "egyptian"
+    - price: ["300","700"]
+  - action: action_validate_city
+  - slot_was_set:
+    - location: "mumbai"
+    - is_location_valid: true
+  - action: action_search_restaurant
+  - slot_was_set:
+    - cuisine: "egyptian"
+    - is_result_found: false
+  - action: utter_noresults
   - action: utter_goodbye
   - action: action_perform_reset
   - action: action_restarted
