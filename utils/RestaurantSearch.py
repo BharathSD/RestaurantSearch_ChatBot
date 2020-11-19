@@ -1,8 +1,8 @@
 import configparser
 import os
-from actions import zomatopy
+from utils import zomatopy
 import json
-from actions.soundex import get_soundex
+from utils.soundex import get_soundex
 
 
 class RestaurantSearch:
