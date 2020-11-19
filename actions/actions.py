@@ -10,9 +10,17 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset, Restarted
-from actions.extractTierCities import TierCities
-from actions.eMail import Email
+from utils.extractTierCities import TierCities
+from utils.eMail import Email
+from utils.RestaurantSearch import RestaurantSearch
 
+class InstanceManager:
+    def __init__(self):
+        self.TierCitiesI = TierCities()
+        self.RestaurantSearchI =RestaurantSearch()
+        self.EmailI = Email()
+
+InstanceManagerI = InstanceManager()
 
 class ActionValidateCity(Action):
 
@@ -27,7 +35,7 @@ class ActionValidateCity(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         loc=tracker.get_slot('location')
-        loc,val = self.TierCitiesI.validate_city(loc)
+        loc,val = InstanceManagerI.TierCitiesI.validate_city(loc)
 
         return [SlotSet('location',loc),SlotSet('is_location_valid',val)]
 
@@ -37,10 +45,18 @@ class ActionSearchRestaurants(Action):
 
     def run(self, dispatcher, tracker, domain):
         cuisine = tracker.get_slot('cuisine')
-        response="no results"
+        location = tracker.get_slot('location')
+        price = tracker.get_slot('price')
+        response = InstanceManagerI.RestaurantSearchI.getRestaurantDetails(location, cuisine, price)
+        if response != 0:
+            # get the data contents to display
+            display_data = InstanceManagerI.RestaurantSearchI.getdisplayContent()
+        else:
+            display_data = "No Results found"
 
-        # todo: the logic of searching restaurants goes here
-        return [SlotSet('cuisine',cuisine),SlotSet('is_result_found',response!="no results")]
+        dispatcher.utter_message(display_data)
+
+        return [SlotSet('cuisine',cuisine), SlotSet('is_result_found',response!=0)]
 
 class ActionSendMail(Action):
 
@@ -48,8 +64,9 @@ class ActionSendMail(Action):
         return "action_send_mail"
 
     def run(self, dispatcher, tracker, domain):
-        EmailI = Email('Body.txt', tracker.get_slot("location").title())
-        retVal = EmailI.sendMail(tracker.get_slot('emailId'))
+        retVal = InstanceManagerI.EmailI.sendMail(tracker.get_slot('emailId'),
+                                                  tracker.get_slot("location").title(),
+                                                  InstanceManagerI.RestaurantSearchI.getdisplayContent())
 
         if retVal is 0:
             dispatcher.utter_template("utter_email_Sent", tracker)
