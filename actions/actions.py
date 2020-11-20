@@ -22,41 +22,55 @@ class InstanceManager:
 
 InstanceManagerI = InstanceManager()
 
-class ActionValidateCity(Action):
+class ActionValidateLocation(Action):
 
     def __init__(self):
         self.TierCitiesI = TierCities()
         Action.__init__(self)
 
     def name(self) -> Text:
-        return "action_validate_city"
+        return "action_location_valid"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         loc=tracker.get_slot('location')
-        loc,val = InstanceManagerI.TierCitiesI.validate_city(loc)
+        location_validity = "valid"
 
-        return [SlotSet('location',loc),SlotSet('is_location_valid',val)]
+        if not loc:
+            location_validity = "invalid"
+        else:
+            val, loc = InstanceManagerI.TierCitiesI.validate_city(loc)
+            if not val:
+                location_validity = "invalid"
 
-class ActionSearchRestaurants(Action):
+        return [SlotSet("location_validity", location_validity), SlotSet("location", loc)]
+
+class ActionValidateCuisine(Action):
     def name(self):
-        return 'action_search_restaurant'
+        return "action_cuisine_valid"
 
     def run(self, dispatcher, tracker, domain):
-        cuisine = tracker.get_slot('cuisine')
-        location = tracker.get_slot('location')
-        price = tracker.get_slot('price')
-        response = InstanceManagerI.RestaurantSearchI.getRestaurantDetails(location, cuisine, price)
-        if response != 0:
-            # get the data contents to display
-            display_data = InstanceManagerI.RestaurantSearchI.getdisplayContent()
+
+        cuisine = tracker.get_slot("cuisine")
+        cuisine_validity = "valid"
+
+        if not cuisine:
+            cuisine_validity = "invalid"
         else:
-            display_data = "No Results found"
+            val, cuisine = InstanceManagerI.RestaurantSearchI.validate_cuisine(cuisine)
+            if not val:
+                cuisine_validity = "invalid"
 
-        dispatcher.utter_message(display_data)
+        return [SlotSet("cuisine_validity", cuisine_validity), SlotSet("cuisine", cuisine)]
 
-        return [SlotSet('cuisine',cuisine), SlotSet('is_result_found',response!=0)]
+
+class ActionRestarted(Action):
+    def name(self):
+        return 'action_restart'
+
+    def run(self, dispatcher, tracker, domain):
+        return[AllSlotsReset(), Restarted()]
 
 class ActionSendMail(Action):
 
@@ -64,27 +78,30 @@ class ActionSendMail(Action):
         return "action_send_mail"
 
     def run(self, dispatcher, tracker, domain):
-        retVal = InstanceManagerI.EmailI.sendMail(tracker.get_slot('emailId'),
-                                                  tracker.get_slot("location").title(),
-                                                  InstanceManagerI.RestaurantSearchI.getdisplayContent())
+        InstanceManagerI.EmailI.sendMail(tracker.get_slot('email'),
+                                         tracker.get_slot("location").title(),
+                                         tracker.get_slot("cuisine"),
+                                         InstanceManagerI.RestaurantSearchI.getdisplayContent())
 
-        if retVal is 0:
-            dispatcher.utter_template("utter_email_Sent", tracker)
-        else:
-            dispatcher.utter_template("utter_email_error", tracker)
         return []
 
-class ActionResetSlots(Action):
+class ActionSearchRestaurants(Action):
     def name(self):
-        return 'action_perform_reset'
+        return 'action_restaurant'
 
     def run(self, dispatcher, tracker, domain):
-        #AllSlotsReset()
-        return [AllSlotsReset()]
+        cuisine = tracker.get_slot('cuisine')
+        location = tracker.get_slot('location')
+        budget = tracker.get_slot('budget')
+        response = InstanceManagerI.RestaurantSearchI.getRestaurantDetails(location, cuisine, budget)
+        if response:
+            # get the data contents to display
+            display_data = InstanceManagerI.RestaurantSearchI.getdisplayContent()
+            search_validity = "valid"
+        else:
+            display_data = "No Results found"
+            search_validity = "invalid"
 
-class ActionRestarted(Action):
-    def name(self):
-        return 'action_restarted'
+        dispatcher.utter_message(display_data)
 
-    def run(self, dispatcher, tracker, domain):
-        return[Restarted()]
+        return [SlotSet("search_validity", search_validity)]

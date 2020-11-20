@@ -15,60 +15,124 @@ class RestaurantSearch:
 
         config={ "user_key":cfg['zomato']['user_key']}
         self.zomato = zomatopy.initialize_app(config)
-        self.cuisines_dict={'american':1,'chinese':25,
+        self.supported_cuisines_dict={'american':1, 'chinese':25,
                             'mexican':73,'italian':55,'north indian':50,
                             'south indian':85}
-        self.soundex_dct={get_soundex(value):value for value in self.cuisines_dict.keys()}
+        self.soundex_dct={get_soundex(value):value for value in self.supported_cuisines_dict.keys()}
         self.df = None
+
+    def validate_cuisine(self, cuisine):
+        rettVal = False
+        val = get_soundex(cuisine)
+        if val in self.soundex_dct.keys():
+            rettVal = True
+            cuisine = self.soundex_dct[val]
+        return rettVal, cuisine
+
 
     def priceMapper(self, price):
         return "> 700"
 
-    def getRestaurantDetails(self, location, cuisine, price):
-        location_detail= self.zomato.get_location(location, 1)
+    def getRestaurantDetails(self, location, cuisine, budget):
 
-        total_filtered_data = 0
-        if get_soundex(cuisine) in self.soundex_dct.keys():
-            cuisine= self.soundex_dct[get_soundex(cuisine)]
+        retVal = True
+
+        if not location:
+            retVal = False
         else:
-            return total_filtered_data
-        try:
-            d1 = json.loads(location_detail)
-            lat=d1["location_suggestions"][0]["latitude"]
-            lon=d1["location_suggestions"][0]["longitude"]
+            # retrieve location details
+            response = self.zomato.get_location(location)
+            location_details = {}
+            if response is not None:
+                response_json = json.loads(response)
+                if response_json["status"] == "success":
+                    # fetch location details and store 'city_id'
+                    location_details = response_json["location_suggestions"][0]
+                    city_id = location_details["city_id"]
+                    city_name = location_details["city_name"]
+                    # Validate if the location details is of the requested location
+                    if location.lower() == city_name.lower():
+                        response_cuisine = self.zomato.get_cuisines(city_id)
 
-            data_lst = []
-            for startIdx in range(0,200,20):
-                results=self.zomato.restaurant_search("", lat, lon, str(self.cuisines_dict.get(cuisine)),20, startIdx)
+                        # filter only supported cuisines
+                        filtered_cuisine = {
+                            key:value
+                            for key,value in response_cuisine.items()
+                            if self.validate_cuisine(value)[0]
+                        }
+
+                        if cuisine is not None:
+                            cuisine_list = [ value for key, value in filtered_cuisine.items()
+                                if str(value).lower() == cuisine.lower()]
+                        else:
+                            cuisine_list = [ value for key, value in filtered_cuisine.items()]
+
+                        restaurants_found = self.search_restaurant( location, location_details, cuisine_list)
+
+                        if len(restaurants_found) > 0:
+                            restaurant_filtered_budget = self.filter_restaurant_by_budget(budget, restaurants_found)
+                            # sort the data by ratings
+                            self.df = pd.DataFrame(restaurant_filtered_budget,
+                                                   columns=['Restaurant Name', 'Address', 'avg_cost2', 'Rating'])
+
+                            self.df.sort_values(by=['Rating'], ascending=False, inplace=True, ignore_index=True)
+                        else:
+                            retVal = False
+                    else:
+                        retVal = False
+                else:
+                    retVal = False
+            else:
+                retVal = False
+
+        return retVal
+
+    def search_restaurant( self, location="", location_details={}, cuisine_list=[] ) -> list:
+        restaurants_found = []
+
+        for startIdx in range(0,200,20):
+                results=self.zomato.restaurant_search(location, location_details["latitude"],
+                                                      location_details["longitude"],
+                                                      ",".join(cuisine_list) ,20, startIdx)
                 d = json.loads(results)
-                if d['results_found'] == 0:
-                    raise Exception('Results not found')
-
-
-                for restaurant in d['restaurants']:
-                    data_lst.append((restaurant['restaurant']['name'],restaurant['restaurant']['location']['address'],
+                if d['results_found'] > 0:
+                    for restaurant in d['restaurants']:
+                        restaurants_found.append((restaurant['restaurant']['name'],restaurant['restaurant']['location']['address'],
                                  float(restaurant['restaurant']['average_cost_for_two']),
                                  float(restaurant['restaurant']['user_rating']['aggregate_rating'])))
+                else:
+                    break
 
-            # sort the data by ratings
-            self.df = pd.DataFrame(data_lst, columns=['Restaurant Name', 'Address', 'avg_cost2', 'Rating'])
+        return restaurants_found
 
-            prc = self.priceMapper(price)
+    def filter_restaurant_by_budget(self, budget, restaurant_list) -> list:
+        filtered_restaurant_list = []
+        # Set the budget range based on input
+        rangeMin = 0
+        rangeMax = 999999
 
-            if prc == "< 300":
-                self.df = self.df[self.df['avg_cost2'] < 300]
-            elif prc == "300 to 700":
-                self.df = self.df[(self.df['avg_cost2'] >= 300) & (self.df['avg_cost2'] <= 700)]
-            elif prc == "> 700":
-                self.df = self.df[self.df['avg_cost2'] > 700]
+        if budget == "299":
+            rangeMax = 299
+        elif budget == "700":
+            rangeMin = 300
+            rangeMax = 700
+        elif budget == "701":
+            rangeMin = 701
+        else:
+            """
+                Default budget
+            """
+            rangeMin = 0
+            rangeMax = 9999
 
-            self.df = self.df.sort_values(by=['Rating'], ascending=False)
-            total_filtered_data = len(self.df)
-        except:
-            total_filtered_data = 0
+        for restaurant in restaurant_list:
+            avg_cost = int(restaurant[2])
 
+            if avg_cost >= rangeMin and avg_cost <= rangeMax:
+                filtered_restaurant_list.append(restaurant)
 
-        return total_filtered_data
+        return filtered_restaurant_list
+
 
     def getdisplayContent(self):
         data_format = '{}. Restaurant Name: {}\n Restaurant locality address: {}\n Average budget for two people: {}\n Zomato user rating: {}\n\n'
@@ -84,6 +148,7 @@ class RestaurantSearch:
 
 
 if __name__ == '__main__':
+    location = "mumbai"
     resSearchI = RestaurantSearch()
-    resSearchI.getRestaurantDetails('bengaluru', 'japanese', '')
+    resSearchI.getRestaurantDetails('bengaluru', 'chinese', '700')
     print(resSearchI.getdisplayContent())

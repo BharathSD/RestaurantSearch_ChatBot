@@ -15,8 +15,8 @@ class Email:
         self.userName = cfg['email']['username']
         self.password = cfg['email']['password']
 
-    def createMailBody(self, location, restaurantDataBody):
-        self.subject=" Restaurant recommendations in "+ location
+    def createMailBody(self, location, cuisine, restaurantDataBody):
+        self.subject=" Restobot - Restaurant Search Assistant | List of {0} Restaurants in {1}".format(cuisine, location)
 
         self.emailTxt = ""
         with open(self.bodyTextFile, 'r') as f:
@@ -33,10 +33,10 @@ class Email:
         msg['To'] = to_add
         return msg
 
-    def sendMail(self, sendAddress, location, restaurantDataBody):
+    def sendMail(self, sendAddress, location, cuisine, restaurantDataBody):
         retVal = 0
         try:
-            self.createMailBody(location, restaurantDataBody)
+            self.createMailBody(location, cuisine, restaurantDataBody)
             server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
             server.ehlo()
             server.login(self.userName, self.password)

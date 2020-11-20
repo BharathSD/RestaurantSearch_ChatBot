@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-from actions.soundex import get_soundex
+from utils.soundex import get_soundex
 
 class TierCities:
     def __init__(self):
@@ -32,6 +32,7 @@ class TierCities:
         self.soundex_dict_syn={get_soundex(key):self.synonym_names[key] for key in self.synonym_names}
 
     def validate_city(self, city_name):
+        city_name = city_name.lower()
         loc_soundex=get_soundex(city_name)
         val=False
         if loc_soundex in self.soundex_dict_tier.keys():
@@ -41,7 +42,7 @@ class TierCities:
             val=True
             city_name= self.soundex_dict_syn[loc_soundex]
 
-        return city_name, val
+        return val, city_name
 
 
 
