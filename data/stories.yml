@@ -6,7 +6,7 @@ stories:
   - action: utter_greet
   - intent: ask_restaurant
   - action: utter_ask_location
-  - intent: ask_restraunt
+  - intent: ask_restaurant
     entities:
     - location: Mumbai
   - action: action_location_valid
@@ -14,7 +14,7 @@ stories:
     - location_validity: valid
     - location: mumbai
   - action: utter_ask_cuisine
-  - intent: ask_restraunt
+  - intent: ask_restaurant
     entities:
     - cuisine: Chinese
   - action: utter_ask_budget
@@ -43,7 +43,7 @@ stories:
   - action: utter_greet
   - intent: ask_restaurant
   - action: utter_ask_location
-  - intent: ask_restraunt
+  - intent: ask_restaurant
     entities:
     - location: Mumbai
   - action: action_location_valid
@@ -51,7 +51,7 @@ stories:
     - location_validity: valid
     - location: mumbai
   - action: utter_ask_cuisine
-  - intent: ask_restraunt
+  - intent: ask_restaurant
     entities:
     - cuisine: Chinese
   - action: utter_ask_budget
@@ -597,14 +597,14 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: bye
+  - intent: goodbye
   - action: utter_bye
   - action: action_restart
 - story: story_ask_rest
   steps:
   - intent: ask_restaurant
   - action: utter_ask_location
-  - intent: bye
+  - intent: goodbye
   - action: utter_bye
   - action: action_restart
 - story: story_greet_out_of_scope

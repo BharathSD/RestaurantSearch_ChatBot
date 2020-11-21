@@ -1,3 +1,4 @@
+version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -18,35 +19,68 @@ entities:
 - email
 - location
 - pincode
-
+- price
 slots:
   budget:
     type: text
+    influence_conversation: true
   cuisine:
     type: text
+    influence_conversation: true
   cuisine_validity:
     type: categorical
+    influence_conversation: true
     values:
     - valid
     - invalid
   email:
     type: text
+    influence_conversation: true
   email_message:
     type: text
+    influence_conversation: true
   location:
     type: text
+    influence_conversation: true
   location_validity:
     type: categorical
+    influence_conversation: true
     values:
     - valid
     - invalid
   search_validity:
     type: categorical
+    influence_conversation: true
     values:
     - valid
     - invalid
+actions:
+- action_cuisine_valid
+- action_location_valid
+- action_restart
+- action_restaurant
+- action_send_email
+- action_slot_reset
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_cuisine_retry
+- utter_ask_details
+- utter_ask_email
+- utter_ask_location
+- utter_ask_location_retry
+- utter_bye
+- utter_confirm_email
+- utter_cuisine_invalid
+- utter_deny
+- utter_did_that_help
+- utter_greet
+- utter_happy
+- utter_location_invalid
+- utter_out_of_scope
+- utter_search_invalid
+- utter_thanks_response
 
-templates:
+responses:
   utter_bye:
   - text: Thanks for talking to me . See you again!
   - text: goodbye, hope i was of help today
@@ -134,29 +168,3 @@ templates:
   - text: Don't mention .
   - text: You are most welcome!
   - text: Anytime dear. 
-
-actions:
-- action_cuisine_valid
-- action_location_valid
-- action_restart
-- action_restaurant
-- action_send_email
-- action_slot_reset
-- utter_ask_budget
-- utter_ask_cuisine
-- utter_ask_cuisine_retry
-- utter_ask_details
-- utter_ask_email
-- utter_ask_location
-- utter_ask_location_retry
-- utter_bye
-- utter_confirm_email
-- utter_cuisine_invalid
-- utter_deny
-- utter_did_that_help
-- utter_greet
-- utter_happy
-- utter_location_invalid
-- utter_out_of_scope
-- utter_search_invalid
-- utter_thanks_response
