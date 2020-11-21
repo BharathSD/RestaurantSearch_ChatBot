@@ -14,6 +14,8 @@ from utils.extractTierCities import TierCities
 from utils.eMail import Email
 from utils.RestaurantSearch import RestaurantSearch
 
+
+
 class InstanceManager:
     def __init__(self):
         self.TierCitiesI = TierCities()

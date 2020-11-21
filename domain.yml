@@ -1,4 +1,3 @@
-version: "2.0"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -12,7 +11,6 @@ intents:
 - greet
 - out_of_scope
 - thank
-
 entities:
 - budget
 - cuisine
@@ -36,9 +34,6 @@ slots:
   email:
     type: text
     influence_conversation: true
-  email_message:
-    type: text
-    influence_conversation: true
   location:
     type: text
     influence_conversation: true
@@ -54,6 +49,77 @@ slots:
     values:
     - valid
     - invalid
+responses:
+  utter_bye:
+  - text: Thanks for talking to me . See you again!
+  - text: goodbye, hope i was of help today
+  - text: Bye-bye , you have an amazing time.
+  - text: Bye! , Bon apetite .
+  utter_ask_budget:
+  - buttons:
+    - payload: '299'
+      title: Lesser than Rs. 300
+    - payload: '700'
+      title: Rs. 300 to 700
+    - payload: '701'
+      title: More than Rs. 700
+    text: What would be your preferred budget?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: Chinese
+      title: Chinese
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_cuisine_retry:
+  - text: Will you like to search for some other cuisine?
+  - text: Can I help you look for some other cuisine today?
+  utter_ask_details:
+  - text: Would you like me to send an email with details of restaurants?
+  - text: Would like thins in your inbox?
+  - text: I can email this to you, would you like that?
+  utter_ask_email:
+  - text: Please provide your email id.
+  utter_ask_location:
+  - text: Where do you want to eat ?
+  - text: In what location?
+  - text: Which city are you looking for?
+  - text: Can you tell me the location you are looking for?
+  utter_ask_location_retry:
+  - text: Will you like to search for some other location?
+  - text: Can I help you look for a restaurant at some other location?
+  utter_confirm_email:
+  - text: An email will be sent to you.
+  utter_cuisine_invalid:
+  - text: Sorry. We do not serve the requested cuisine.
+  utter_did_that_help:
+  - text: hope that helped you?
+  utter_deny:
+  - text: Sorry, hope to serve you better next time.
+  utter_greet:
+  - text: Hello there! Where would you like to eat today?
+  - text: Hey Hungry! Where do you like to dine today ?
+  utter_happy:
+  - text: Awesome XOX.
+  utter_location_invalid:
+  - text: Sorry mate , no service at the requested location.
+  utter_out_of_scope:
+  - text: Sorry,Can you repeat that .I dont speak that language.
+  utter_search_invalid:
+  - text: Sorry, we do not have any restaurants which match your requirements. Hope
+      to serve you better next time!
+  utter_thanks_response:
+  - text: Don't mention .
+  - text: You are most welcome!
+  - text: Anytime dear.
 actions:
 - action_cuisine_valid
 - action_location_valid
@@ -61,110 +127,3 @@ actions:
 - action_restaurant
 - action_send_email
 - action_slot_reset
-- utter_ask_budget
-- utter_ask_cuisine
-- utter_ask_cuisine_retry
-- utter_ask_details
-- utter_ask_email
-- utter_ask_location
-- utter_ask_location_retry
-- utter_bye
-- utter_confirm_email
-- utter_cuisine_invalid
-- utter_deny
-- utter_did_that_help
-- utter_greet
-- utter_happy
-- utter_location_invalid
-- utter_out_of_scope
-- utter_search_invalid
-- utter_thanks_response
-
-responses:
-  utter_bye:
-  - text: Thanks for talking to me . See you again!
-  - text: goodbye, hope i was of help today
-  - text: Bye-bye , you have an amazing time.
-  - text: Bye! , Bon apetite .
-
-  utter_ask_budget:
-  - text: What would be your preferred budget?
-    buttons:
-    - title: Lesser than Rs. 300
-      payload: '/ask_budget{"budget": "299"}'
-    - title: Rs. 300 to 700
-      payload: '/ask_budget{"budget": "700"}'
-    - title: More than Rs. 700
-      payload: '/ask_budget{"budget": "701"}'
-
-  utter_ask_cuisine:
-  - text: what kind of cuisine would you like?
-    buttons:
-    - title: Mexican
-      payload: Mexican
-    - title: Italian
-      payload: Italian
-    - title: American
-      payload: American
-    - title: Chinese
-      payload: Chinese
-    - title: South Indian
-      payload: South Indian
-    - title: North Indian
-      payload: North Indian
-
-  utter_ask_cuisine_retry:
-  - text: Will you like to search for some other cuisine?
-  - text: Can I help you look for some other cuisine today?
-
-  utter_ask_details:
-  - text: Would you like me to send an email with details of restaurants?
-  - text: Would like thins in your inbox?
-  - text: I can email this to you, would you like that?
-
-  utter_ask_email:
-  - text: Please provide your email id.
-
-  utter_ask_location:
-  - text: Where do you want to eat ? 
-  - text: In what location?
-  - text: Which city are you looking for?
-  - text: Can you tell me the location you are looking for?
-
-  utter_ask_location_retry:
-  - text: Will you like to search for some other location?
-  - text: Can I help you look for a restaurant at some other location?
-
-  utter_confirm_email:
-  - text: An email will be sent to you.
-
-  utter_cuisine_invalid:
-  - text: Sorry. We do not serve the requested cuisine.
-
-  utter_did_that_help:
-  - text: hope that helped you?
-
-  utter_deny:
-  - text: Sorry, hope to serve you better next time.
-
-  utter_greet:
-  - text: Hello there! Where would you like to eat today?
-  - text: Hey Hungry! Where do you like to dine today ?
-
-  utter_happy:
-  - text: Awesome XOX.
-
-  utter_location_invalid:
-  - text: Sorry mate , no service at the requested location.
-
-  utter_out_of_scope:
-  - text: Sorry,Can you repeat that .I dont speak that language.
-
-  utter_search_invalid:
-  - text: Sorry, we do not have any restaurants which match your requirements. Hope
-      to serve you better next time!
-
-  utter_thanks_response:
-  - text: Don't mention .
-  - text: You are most welcome!
-  - text: Anytime dear. 
