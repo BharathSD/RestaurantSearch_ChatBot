@@ -106,23 +106,26 @@ class RestaurantSearch:
 
     def filter_restaurant_by_budget(self, budget, restaurant_list) -> list:
         filtered_restaurant_list = []
+        try:
+            budget = int(budget)
+        except:
+            budget = 701
+
+        rangeMin = 0
+        rangeMax = 9999
+
+        if budget <300:
+            rangeMax = 299
+        elif budget<700:
+            rangeMin = 300
+            rangeMax = 700
+        else:
+            rangeMin = 701
+
         # Set the budget range based on input
         rangeMin = 0
         rangeMax = 999999
 
-        if budget == "299":
-            rangeMax = 299
-        elif budget == "700":
-            rangeMin = 300
-            rangeMax = 700
-        elif budget == "701":
-            rangeMin = 701
-        else:
-            """
-                Default budget
-            """
-            rangeMin = 0
-            rangeMax = 9999
 
         for restaurant in restaurant_list:
             avg_cost = int(restaurant[2])

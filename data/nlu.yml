@@ -96,6 +96,11 @@ nlu:
     - i quit
     - take care
     - good bye
+    - you don't know anything good bye
+    - okay, u don't know anything cya
+    - get lost and good bye
+    - yes thank u good bye
+    - yes thanks, bye
 - intent: affirm
   examples: |
     - yes
@@ -170,7 +175,6 @@ nlu:
     - yea
     - yes thank you
     - yes sir
-    - alright
 - intent: deny
   examples: |
     - no
@@ -223,6 +227,9 @@ nlu:
     - no not needed
     - i have changed my mind, i don't want mail
     - i will not say
+    - no thank u
+    - i don't think so. bye
+    - no thanks bye
 - intent: thank
   examples: |
     - Thanks
@@ -271,6 +278,7 @@ nlu:
     - more than [500](budget)
     - [700](budget)
     - [299](budget)
+    - [701](budget)[701](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -525,6 +533,19 @@ nlu:
     - [American](cuisine)
     - I would like to eat [chinese](cuisine) today
     - [pune](location)
+    - would u mind helping me with restaurants in [chennai](location) manily [italian](cuisine) with budget [300](budget) and above
+    - i am hungry
+    - in [bangalore]{"entity": "location", "value": "bengaluru"}
+    - [chinese](cuisine)
+    - i am hungry, can u help me with [north indian](cuisine) restaurants in [hubli](location) with budget greater than [500](budget)
+    - how about searching in [mysore](location) ?
+    - i am looking for restaurant in [madras]{"entity": "location", "value": "chennai"}
+    - [egyptian](cuisine)
+    - can u find me restaurants with budget [400](budget)rs ?
+    - [kolkata](location)
+    - [Italian](cuisine)
+    - hi help me with [spanish](cuisine) restaurants
+    - heya, find me a [vietnamese](cuisine) restaurant in [ajmer](location)
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -639,6 +660,11 @@ nlu:
     - whats the weather today?
     - F you!
     - would love to have some [American](cuisine) somewhere
+    - i don't trust bot
+    - why do u care if i have to dine ?
+    - can u help me ?
+    - how the hell ?
+    - why do u care ?
 - intent: ask_email
   examples: |
     - can u mail me the information to [abc@abc.com](email)?

@@ -1033,3 +1033,287 @@ stories:
   - action: utter_happy
   - action: utter_bye
   - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - location: chennai
+    - cuisine: italian
+    - budget: '300'
+  - slot_was_set:
+    - budget: '300'
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - location: chennai
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: chennai
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: italian
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+  - action: utter_ask_location
+  - intent: ask_restaurant
+    entities:
+    - location: bengaluru
+  - slot_was_set:
+    - location: bengaluru
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: bengaluru
+  - action: utter_ask_cuisine
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_4
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: north indian
+    - location: hubli
+    - budget: '500'
+  - slot_was_set:
+    - budget: '500'
+  - slot_was_set:
+    - cuisine: north indian
+  - slot_was_set:
+    - location: hubli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: hubli
+  - action: utter_search_invalid
+  - action: utter_ask_location_retry
+  - intent: ask_restaurant
+    entities:
+    - location: mysore
+  - slot_was_set:
+    - location: mysore
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: mysore
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: north indian
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_5
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_6
+  steps:
+  - intent: ask_restaurant
+  - action: utter_ask_location
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_8
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: chennai
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: egyptian
+  - slot_was_set:
+    - cuisine: egyptian
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: egyptian
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_9
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - budget: '400'
+  - slot_was_set:
+    - budget: '400'
+  - action: utter_ask_location
+  - intent: ask_restaurant
+    entities:
+    - location: kolkata
+  - slot_was_set:
+    - location: kolkata
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: kolkata
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_did_that_help
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_10
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: spanish
+  - slot_was_set:
+    - cuisine: spanish
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: spanish
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_11
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: vietnamese
+    - location: ajmer
+  - slot_was_set:
+    - cuisine: vietnamese
+  - slot_was_set:
+    - location: ajmer
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: ajmer
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: vietnamese
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: affirm
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_did_that_help
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
