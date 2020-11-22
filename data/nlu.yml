@@ -264,7 +264,7 @@ nlu:
     - yeah it did, thanks a lot
     - yes thank you
     - yes thank u
-    - [brilliant](thank)
+    - brilliant thank
     - thanks muchos
     - thanks bud
 - intent: ask_budget
@@ -278,7 +278,6 @@ nlu:
     - more than [500](budget)
     - [700](budget)
     - [299](budget)
-    - [701](budget)[701](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -541,7 +540,7 @@ nlu:
     - how about searching in [mysore](location) ?
     - i am looking for restaurant in [madras]{"entity": "location", "value": "chennai"}
     - [egyptian](cuisine)
-    - can u find me restaurants with budget [400](budget)rs ?
+    - can u find me restaurants with budget [400](budget) rs ?
     - [kolkata](location)
     - [Italian](cuisine)
     - hi help me with [spanish](cuisine) restaurants
