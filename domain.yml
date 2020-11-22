@@ -2,14 +2,14 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- ask_restaurant
+- goodbye
 - greet
 - thank
 - ask_email
 - ask_budget
-- ask_restaurant
 - affirm
 - deny
-- goodbye
 - out_of_scope
 entities:
 - budget
@@ -135,4 +135,5 @@ actions:
 - utter_bye
 - utter_confirm_email
 - utter_greet
+- utter_search_invalid
 version: '2.0'

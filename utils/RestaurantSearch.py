@@ -67,19 +67,16 @@ class RestaurantSearch:
                         else:
                             cuisine_list = [ value for key, value in filtered_cuisine.items()]
 
-                        restaurants_found = self.search_restaurant( location, location_details, cuisine_list)
-
-                        if len(restaurants_found) > 0:
-                            restaurant_filtered_budget = self.filter_restaurant_by_budget(budget, restaurants_found)
-                            # sort the data by ratings
-                            self.df = pd.DataFrame(restaurant_filtered_budget,
+                        restaurants_found = self.search_restaurant( '', location_details, cuisine_list)
+                        restaurant_filtered_budget = self.filter_restaurant_by_budget(budget, restaurants_found)
+                        # sort the data by ratings
+                        self.df = pd.DataFrame(restaurant_filtered_budget,
                                                    columns=['Restaurant Name', 'Address', 'avg_cost2', 'Rating'])
 
-                            self.df.sort_values(by=['Rating'], ascending=False, inplace=True, ignore_index=True)
+                        self.df.sort_values(by=['Rating'], ascending=False, inplace=True, ignore_index=True)
 
-                            retVal = len(restaurant_filtered_budget) > 0
-                        else:
-                            retVal = False
+                        retVal = len(restaurant_filtered_budget) > 0
+
                     else:
                         retVal = False
                 else:

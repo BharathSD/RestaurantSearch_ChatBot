@@ -482,6 +482,7 @@ nlu:
     - can u help me with restaurants ?
     - in [bengaluru](location)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
+    - i am searching for restaurants in [hubli](location)
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -642,6 +643,11 @@ nlu:
     - yes please send the mail to [iamcooldude@gmail.com](email)
     - [getThemail@yahoo.co.in](email)
     - [sendamailtokarthik@gmail.com](email)
+- synonym: chinese
+  examples: |
+    - Chinese
+    - chines
+    - Chines
 - synonym: bengaluru
   examples: |
     - Bangalore
@@ -704,11 +710,6 @@ nlu:
   examples: |
     - cochin
     - Cochin
-- synonym: chinese
-  examples: |
-    - chines
-    - Chinese
-    - Chines
 - synonym: mid
   examples: |
     - moderate

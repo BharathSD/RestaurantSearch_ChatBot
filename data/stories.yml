@@ -180,3 +180,30 @@ stories:
   - intent: thank
   - action: utter_bye
   - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_2
+  steps:
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - location: hubli
+  - slot_was_set:
+    - location: hubli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: hubli
+  - action: utter_search_invalid
+  - action: utter_ask_location_retry
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
