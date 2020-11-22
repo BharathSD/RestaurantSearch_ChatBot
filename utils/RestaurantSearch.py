@@ -51,7 +51,7 @@ class RestaurantSearch:
                     city_id = location_details["city_id"]
                     city_name = location_details["city_name"]
                     # Validate if the location details is of the requested location
-                    if location.lower() == city_name.lower():
+                    if location.lower() in city_name.lower():
                         response_cuisine = self.zomato.get_cuisines(city_id)
 
                         # filter only supported cuisines
@@ -67,7 +67,7 @@ class RestaurantSearch:
                         else:
                             cuisine_list = [ value for key, value in filtered_cuisine.items()]
 
-                        restaurants_found = self.search_restaurant( '', location_details, cuisine_list)
+                        restaurants_found = self.search_restaurant( location, location_details, cuisine_list)
                         restaurant_filtered_budget = self.filter_restaurant_by_budget(budget, restaurants_found)
                         # sort the data by ratings
                         self.df = pd.DataFrame(restaurant_filtered_budget,
@@ -149,5 +149,5 @@ class RestaurantSearch:
 if __name__ == '__main__':
     location = "mumbai"
     resSearchI = RestaurantSearch()
-    resSearchI.getRestaurantDetails('bengaluru', 'mexican', '299')
+    resSearchI.getRestaurantDetails('delhi', 'south indian', '701')
     print(resSearchI.getdisplayContent())

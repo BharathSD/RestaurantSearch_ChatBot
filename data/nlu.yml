@@ -162,6 +162,9 @@ nlu:
     - fine
     - i will take that
     - that sounds just right
+    - please do
+    - yes it helped
+    - yes it did
 - intent: deny
   examples: |
     - no
@@ -210,6 +213,10 @@ nlu:
     - neither will work
     - suggest some other option
     - is this the best you can do
+    - not now, thanks
+    - no not needed
+    - i have changed my mind, i don't want mail
+    - i will not say
 - intent: thank
   examples: |
     - Thanks
@@ -241,6 +248,7 @@ nlu:
     - Thanks!
     - cool thanks
     - thanks for forum link, I'll check it out
+    - yeah it did, thanks a lot
 - intent: ask_budget
   examples: |
     - I want to eat at a place between [300](budget) and [700](budget)
@@ -249,7 +257,7 @@ nlu:
     - [300](budget)
     - [701](budget)
     - around [1000](budget)
-    - [700](budget)
+    - more than [500](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -284,24 +292,24 @@ nlu:
     - I am looking for some restaurants in [delhi](location)
     - I am looking for [mexican indian fusion](cuisine)
     - I am looking for a restaurant in [Delhi](location)
-    - I am looking for a [chinese](cuisine) restaurant in [Delhi](location) for a budget of [300](price) to [700](price)
-    - Looking for [north indian](cuisine) restaurant in [pune](location) for a [max](price) budget of [700](price)
+    - I am looking for a [chinese](cuisine) restaurant in [Delhi](location) for a budget of [300](budget) to [700](budget)
+    - Looking for [north indian](cuisine) restaurant in [pune](location) for a max budget of [700](budget)
     - I am looking for an [american](cuisine) restaurant in [delhi](location).
     - I am looking for an [italian](cuisine) restaurant in [bangalore](location).
     - I want to eat [chinese](cuisine)
-    - I am looking for a restaurant in [delhi](location) for a budget of [700](price)
+    - I am looking for a restaurant in [delhi](location) for a budget of [700](budget)
     - I am looking for restaurant in [jaipur](location).
     - I am looking for restaurants in [dehradun](location).
     - Could you help me find some [chinese](cuisine) restaurants in [calcutta](location)?
     - Italian restaturants in [kolkata](location)
     - I am looking for [chainese](cuisine) restaurant in [bombay](location)
-    - sure, could you look for some [america](cuisine) restaurants in range of [300](price) to [400](price)?
+    - sure, could you look for some [america](cuisine) restaurants in range of [300](budget) to [400](budget)?
     - Looking for some restaurants in [rourkela](location)
     - looking for some good spots
     - I want to eat [tacos](cuisine)
     - I want to eat [burgers](cuisine)
     - I want to eat [burger](cuisine)
-    - I am looking for an [italian](cuisine) restaurant in [mumbai](location) in range of [400](price) and [800](price)
+    - I am looking for an [italian](cuisine) restaurant in [mumbai](location) in range of [400](budget) and [800](budget)
     - I am Hungry
     - I want food
     - Find restaurants
@@ -483,6 +491,15 @@ nlu:
     - in [bengaluru](location)
     - [Chinese]{"entity": "cuisine", "value": "chinese"}
     - i am searching for restaurants in [hubli](location)
+    - can u help me with restaurants in [delhi]{"entity": "location", "value": "Delhi"}
+    - [South Indian]{"entity": "cuisine", "value": "south indian"}
+    - can u help mewith restaurant search for [chinese](cuisine) cuisine in [mysore](location)
+    - looking for [south indian](cuisine) restaurant in [delhi]{"entity": "location", "value": "Delhi"}
+    - can u send me a list of [italian](cuisine) restaurants in [mumbai](location) to my mail id [sdb2030@gmail.com](email)
+    - hey there can u help me with [north indian](cuisine) restaurants in [mysore](location) with budget [500](budget) for 2 and also mail to [umadevendra6@gmail.com](email)
+    - help me with [chinese](cuisine) restaurants in [hubli](location) with budget [300](budget)
+    - can u help me with restaurant search in [chennai](location) for [american](cuisine) cuisine
+    - Hello i am looking for a restaurant for a family outting
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -591,6 +608,9 @@ nlu:
     - Why don’t you answer?
     - But you're an english site :(
     - can you help me to build a bot
+    - i don't care
+    - why should i tell u ?
+    - are u a bot ?
 - intent: ask_email
   examples: |
     - can u mail me the information to [abc@abc.com](email)?
@@ -643,11 +663,27 @@ nlu:
     - yes please send the mail to [iamcooldude@gmail.com](email)
     - [getThemail@yahoo.co.in](email)
     - [sendamailtokarthik@gmail.com](email)
+    - [sdb2030@gmail.com](email)
 - synonym: chinese
   examples: |
     - Chinese
     - chines
     - Chines
+- synonym: Delhi
+  examples: |
+    - delhi
+    - New Delhi
+    - dilli
+    - New dilli
+    - nayi dilli
+- synonym: south indian
+  examples: |
+    - South Indian
+    - biriyani
+    - South indian
+    - south Indian
+    - south idian
+    - sout indian
 - synonym: bengaluru
   examples: |
     - Bangalore
@@ -663,13 +699,6 @@ nlu:
   examples: |
     - madras
     - Chennai
-- synonym: Delhi
-  examples: |
-    - New Delhi
-    - dilli
-    - New dilli
-    - delhi
-    - nayi dilli
 - synonym: Kolkata
   examples: |
     - Calcutta
@@ -735,13 +764,6 @@ nlu:
     - pizza
     - tacos
     - pizzas
-- synonym: south indian
-  examples: |
-    - biriyani
-    - South indian
-    - south Indian
-    - south idian
-    - sout indian
 - synonym: '1'
   examples: |
     - one
@@ -768,8 +790,8 @@ nlu:
     - Six
 - regex: budget
   examples: |
-    - \d{3,}
-- regex: emailId
+    - ^\d{3,}
+- regex: email
   examples: |
     - ([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
 - regex: greet
@@ -779,4 +801,4 @@ nlu:
     - \bhowdy\b
 - regex: pincode
   examples: |
-    - \d{6}
+    - ^\d{6}

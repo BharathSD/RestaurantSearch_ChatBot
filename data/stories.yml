@@ -207,3 +207,286 @@ stories:
   - intent: deny
   - action: utter_bye
   - action: action_restart
+
+- story: interactive_story_11
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - location: Delhi
+  - slot_was_set:
+    - location: Delhi
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: delhi
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: south indian
+  - slot_was_set:
+    - cuisine: south indian
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: invalid
+  - action: utter_ask_cuisine_retry
+  - intent: affirm
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_111
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+    - location: mysore
+  - slot_was_set:
+    - cuisine: chinese
+  - slot_was_set:
+    - location: mysore
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: mysore
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '700'
+    - budget: '700'
+  - slot_was_set:
+    - budget: '700'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_211
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: south indian
+    - location: Delhi
+  - slot_was_set:
+    - cuisine: south indian
+  - slot_was_set:
+    - location: Delhi
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: delhi
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: south indian
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: ask_email
+    entities:
+    - budget: '2030'
+    - email: sdb2030@gmail.com
+  - slot_was_set:
+    - budget: '2030'
+  - slot_was_set:
+    - email: sdb2030@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_311
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: italian
+    - location: mumbai
+    - email: sdb2030@gmail.com
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - email: sdb2030@gmail.com
+  - slot_was_set:
+    - location: mumbai
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: mumbai
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: italian
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_411
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: north indian
+    - location: mysore
+    - budget: '500'
+    - email: umadevendra6@gmail.com
+  - slot_was_set:
+    - budget: '500'
+  - slot_was_set:
+    - cuisine: north indian
+  - slot_was_set:
+    - email: umadevendra6@gmail.com
+  - slot_was_set:
+    - location: mysore
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: mysore
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: north indian
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: thank
+  - action: utter_thanks_response
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_12
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+    - location: hubli
+    - budget: '300'
+  - slot_was_set:
+    - budget: '300'
+  - slot_was_set:
+    - cuisine: chinese
+  - slot_was_set:
+    - location: hubli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: hubli
+  - action: utter_search_invalid
+  - action: utter_ask_location_retry
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_22
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - location: chennai
+    - cuisine: american
+  - slot_was_set:
+    - cuisine: american
+  - slot_was_set:
+    - location: chennai
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: chennai
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: american
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '500'
+  - slot_was_set:
+    - budget: '500'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_32
+  steps:
+  - intent: ask_restaurant
+  - action: utter_ask_location
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: deny
+  - action: utter_deny
+  - action: utter_bye
+  - action: action_restart
