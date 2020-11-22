@@ -74,6 +74,7 @@ nlu:
     - jop
     - hi friend
     - hi there it's me
+    - Hey girl
 - intent: goodbye
   examples: |
     - cu
@@ -94,6 +95,7 @@ nlu:
     - quit
     - i quit
     - take care
+    - good bye
 - intent: affirm
   examples: |
     - yes
@@ -165,6 +167,10 @@ nlu:
     - please do
     - yes it helped
     - yes it did
+    - yea
+    - yes thank you
+    - yes sir
+    - alright
 - intent: deny
   examples: |
     - no
@@ -249,6 +255,11 @@ nlu:
     - cool thanks
     - thanks for forum link, I'll check it out
     - yeah it did, thanks a lot
+    - yes thank you
+    - yes thank u
+    - [brilliant](thank)
+    - thanks muchos
+    - thanks bud
 - intent: ask_budget
   examples: |
     - I want to eat at a place between [300](budget) and [700](budget)
@@ -258,6 +269,8 @@ nlu:
     - [701](budget)
     - around [1000](budget)
     - more than [500](budget)
+    - [700](budget)
+    - [299](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -500,6 +513,18 @@ nlu:
     - help me with [chinese](cuisine) restaurants in [hubli](location) with budget [300](budget)
     - can u help me with restaurant search in [chennai](location) for [american](cuisine) cuisine
     - Hello i am looking for a restaurant for a family outting
+    - looking for a restaurant with budget [299](budget)
+    - [muzzafarnagar](location)
+    - yes check in [allahabad](location)
+    - would u mind helping me with [italian](cuisine) restaurants search and mail to [sdb2030@gmail.com](email)
+    - in [pune](location)
+    - looking for restaurants
+    - looking for restaurants in [jaipur](location) mainly [american](cuisine) for budget [2000](budget)
+    - [umadevendra6@gmail.com](email)
+    - I would like to eat in [Hyderabad](location) today
+    - [American](cuisine)
+    - I would like to eat [chinese](cuisine) today
+    - [pune](location)
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -611,6 +636,9 @@ nlu:
     - i don't care
     - why should i tell u ?
     - are u a bot ?
+    - whats the weather today?
+    - F you!
+    - would love to have some [American](cuisine) somewhere
 - intent: ask_email
   examples: |
     - can u mail me the information to [abc@abc.com](email)?
@@ -663,7 +691,12 @@ nlu:
     - yes please send the mail to [iamcooldude@gmail.com](email)
     - [getThemail@yahoo.co.in](email)
     - [sendamailtokarthik@gmail.com](email)
-    - [sdb2030@gmail.com](email)
+    - [shivapuram.bharath@gmail.com](email)
+    - [krishna.kaushikmn@gmail.com](email)
+    - email the best [chinese](cuisine) restraunt in [bengaluru](location) to [sendamailtokarthik@gmail.com](email)
+    - send it to [krishna.kaushikmn@gmail.com](email)
+    - [zahid.baig@citrix.com](email)
+    - [karthik.mn@citrix.com](email)
 - synonym: chinese
   examples: |
     - Chinese

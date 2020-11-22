@@ -48,4 +48,4 @@ class TierCities:
 
 if __name__ == '__main__':
     I = TierCities()
-    I.find_synonym()
+    I.validate_city('allahabad')

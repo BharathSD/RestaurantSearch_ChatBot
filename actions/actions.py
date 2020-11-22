@@ -67,12 +67,12 @@ class ActionValidateCuisine(Action):
         return [SlotSet("cuisine_validity", cuisine_validity), SlotSet("cuisine", cuisine)]
 
 
-class ActionRestarted(Action):
-    def name(self):
-        return 'action_restart'
-
-    def run(self, dispatcher, tracker, domain):
-        return[AllSlotsReset(), Restarted()]
+# class ActionRestarted(Action):
+#     def name(self):
+#         return 'action_restart'
+#
+#     def run(self, dispatcher, tracker, domain):
+#         return[AllSlotsReset(), Restarted()]
 
 class ActionSendMail(Action):
 
