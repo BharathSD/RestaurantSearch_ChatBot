@@ -76,6 +76,8 @@ class RestaurantSearch:
                                                    columns=['Restaurant Name', 'Address', 'avg_cost2', 'Rating'])
 
                             self.df.sort_values(by=['Rating'], ascending=False, inplace=True, ignore_index=True)
+
+                            retVal = len(restaurant_filtered_budget) > 0
                         else:
                             retVal = False
                     else:
@@ -150,5 +152,5 @@ class RestaurantSearch:
 if __name__ == '__main__':
     location = "mumbai"
     resSearchI = RestaurantSearch()
-    resSearchI.getRestaurantDetails('bengaluru', 'chinese', '700')
+    resSearchI.getRestaurantDetails('bengaluru', 'mexican', '299')
     print(resSearchI.getdisplayContent())

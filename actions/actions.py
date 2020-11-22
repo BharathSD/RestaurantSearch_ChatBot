@@ -77,7 +77,7 @@ class ActionRestarted(Action):
 class ActionSendMail(Action):
 
     def name(self):
-        return "action_send_mail"
+        return "action_send_email"
 
     def run(self, dispatcher, tracker, domain):
         InstanceManagerI.EmailI.sendMail(tracker.get_slot('email'),

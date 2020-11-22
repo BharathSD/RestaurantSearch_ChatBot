@@ -139,3 +139,44 @@ stories:
   - action: utter_happy
   - action: utter_bye
   - action: action_restart
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - location: bengaluru
+  - slot_was_set:
+    - location: bengaluru
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: bengaluru
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '700'
+    - budget: '700'
+  - slot_was_set:
+    - budget: '700'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: ask_email
+    entities:
+    - email: sendamailtokarthik@gmail.com
+  - slot_was_set:
+    - email: sendamailtokarthik@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - intent: thank
+  - action: utter_bye
+  - action: action_restart

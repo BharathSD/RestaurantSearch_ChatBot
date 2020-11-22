@@ -243,9 +243,13 @@ nlu:
     - thanks for forum link, I'll check it out
 - intent: ask_budget
   examples: |
-    - I want to eat at a place between 300 and 700
-    - I am fine with an expensive place
-    - I am looking for a dinner place at less than 300
+    - I want to eat at a place between [300](budget) and [700](budget)
+    - I am fine with [580](budget)
+    - I am looking for a dinner place at less than [300](budget)
+    - [300](budget)
+    - [701](budget)
+    - around [1000](budget)
+    - [700](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -260,7 +264,7 @@ nlu:
     - i'm looking for a place in the north of town
     - show me [chinese](cuisine) restaurants
     - show me chines restaurants in the [north](location)
-    - i am looking for an [indian](cuisine) spot called olaolaolaolaolaola
+    - i am looking for an [south indian](cuisine) spot called olaolaolaolaolaola
     - search for restaurants
     - [South Indian](cuisine)
     - [North Indian](cuisine)
@@ -476,6 +480,8 @@ nlu:
     - Show me an open restaurant
     - Find a restaurant for me to eat
     - can u help me with restaurants ?
+    - in [bengaluru](location)
+    - [Chinese]{"entity": "cuisine", "value": "chinese"}
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -635,6 +641,7 @@ nlu:
     - [sanesanyo@amsterdam.de](email)
     - yes please send the mail to [iamcooldude@gmail.com](email)
     - [getThemail@yahoo.co.in](email)
+    - [sendamailtokarthik@gmail.com](email)
 - synonym: bengaluru
   examples: |
     - Bangalore
@@ -758,6 +765,9 @@ nlu:
   examples: |
     - six
     - Six
+- regex: budget
+  examples: |
+    - \d{3,}
 - regex: emailId
   examples: |
     - ([\w\.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)
