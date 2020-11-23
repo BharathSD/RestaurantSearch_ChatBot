@@ -122,10 +122,6 @@ class RestaurantSearch:
         else:
             rangeMin = 701
 
-        # Set the budget range based on input
-        rangeMin = 0
-        rangeMax = 999999
-
 
         for restaurant in restaurant_list:
             avg_cost = int(restaurant[2])
@@ -152,5 +148,5 @@ class RestaurantSearch:
 if __name__ == '__main__':
     location = "mumbai"
     resSearchI = RestaurantSearch()
-    resSearchI.getRestaurantDetails('delhi', 'south indian', '701')
+    resSearchI.getRestaurantDetails('bengaluru', 'chinese', '299')
     print(resSearchI.getdisplayContent())

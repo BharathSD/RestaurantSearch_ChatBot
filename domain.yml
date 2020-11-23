@@ -2,15 +2,15 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- ask_restaurant
-- ask_budget
 - greet
-- out_of_scope
-- goodbye
+- thank
 - affirm
 - deny
-- thank
 - ask_email
+- ask_restaurant
+- ask_budget
+- goodbye
+- out_of_scope
 entities:
 - budget
 - cuisine

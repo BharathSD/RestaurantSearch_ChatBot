@@ -202,7 +202,7 @@ stories:
     - location_validity: invalid
   - slot_was_set:
     - location: hubli
-  - action: utter_search_invalid
+  - action: utter_location_invalid
   - action: utter_ask_location_retry
   - intent: deny
   - action: utter_bye
@@ -436,7 +436,7 @@ stories:
     - location_validity: invalid
   - slot_was_set:
     - location: hubli
-  - action: utter_search_invalid
+  - action: utter_location_invalid
   - action: utter_ask_location_retry
   - intent: deny
   - action: utter_bye
@@ -525,7 +525,7 @@ stories:
     - location_validity: invalid
   - slot_was_set:
     - location: allahabad
-  - action: utter_search_invalid
+  - action: utter_location_invalid
   - action: utter_ask_location_retry
   - intent: deny
   - action: utter_bye
@@ -1139,7 +1139,7 @@ stories:
     - location_validity: invalid
   - slot_was_set:
     - location: hubli
-  - action: utter_search_invalid
+  - action: utter_location_invalid
   - action: utter_ask_location_retry
   - intent: ask_restaurant
     entities:
@@ -1315,5 +1315,533 @@ stories:
   - intent: deny
   - action: utter_did_that_help
   - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_15
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: spanish
+    - location: hubli
+  - slot_was_set:
+    - cuisine: spanish
+  - slot_was_set:
+    - location: hubli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: hubli
+  - action: utter_location_invalid
+  - action: utter_ask_location_retry
+  - intent: ask_restaurant
+    entities:
+    - location: chennai
+  - slot_was_set:
+    - location: chennai
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: chennai
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: spanish
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '700'
+    - budget: '700'
+  - slot_was_set:
+    - budget: '700'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: ask_restaurant
+    entities:
+    - email: sdb2030@gmail.com
+    - email: sdb2030@gmail.com
+  - slot_was_set:
+    - email: sdb2030@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_25
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: vietnamise
+    - location: jabalpur
+    - budget: '500'
+  - slot_was_set:
+    - budget: '500'
+  - slot_was_set:
+    - cuisine: vietnamise
+  - slot_was_set:
+    - location: jabalpur
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: jabalpur
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: vietnamise
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_35
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: spanish
+    - location: jaipur
+    - budget: '300'
+  - slot_was_set:
+    - budget: '300'
+  - slot_was_set:
+    - cuisine: spanish
+  - slot_was_set:
+    - location: jaipur
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: jaipur
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: spanish
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_26
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: spanish
+    - location: jamnagar
+  - slot_was_set:
+    - cuisine: spanish
+  - slot_was_set:
+    - location: jamnagar
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: jamnagar
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: spanish
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: ask_restaurant
+    entities:
+    - cuisine: american
+  - slot_was_set:
+    - cuisine: american
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: american
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: ask_email
+    entities:
+    - email: rymugad@gmail.com
+    - email: rymugad@gmail.com
+  - slot_was_set:
+    - email: rymugad@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: thank
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_36
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - email: rymugad@gmail.com
+    - cuisine: italian
+    - location: belgaum
+    - budget: '700'
+    - email: rymugad@gmail.com
+  - slot_was_set:
+    - budget: '700'
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - email: rymugad@gmail.com
+  - slot_was_set:
+    - location: belgaum
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: belgaum
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: italian
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_46
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: italian
+    - location: hyderabad
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - location: hyderabad
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: hyderabad
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: italian
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: ask_email
+    entities:
+    - email: rajasekharputha@gmail.com
+    - email: rajasekharputha@gmail.com
+  - slot_was_set:
+    - email: rajasekharputha@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_56
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - location: marathalli
+  - slot_was_set:
+    - location: marathalli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: marathalli
+  - action: utter_location_invalid
+  - action: utter_ask_location_retry
+  - intent: goodbye
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_18
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - email: bharath.shivapuram@continental-corporation.com
+    - cuisine: spanish
+    - location: prayagraj
+    - budget: '500'
+    - email: bharath.shivapuram@continental-corporation.com
+  - slot_was_set:
+    - budget: '500'
+  - slot_was_set:
+    - cuisine: spanish
+  - slot_was_set:
+    - email: bharath.shivapuram@continental-corporation.com
+  - slot_was_set:
+    - location: prayagraj
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: prayagraj
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: spanish
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_28
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: italian
+    - location: china
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - location: china
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: chennai
+
+- story: interactive_story_38
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: italian
+    - location: nanjangud
+  - slot_was_set:
+    - cuisine: italian
+  - slot_was_set:
+    - location: nanjangud
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: invalid
+  - slot_was_set:
+    - location: nanjangud
+  - action: utter_location_invalid
+  - action: utter_ask_location_retry
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_48
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+    entities:
+    - cuisine: mexican
+    - location: Delhi
+  - slot_was_set:
+    - cuisine: mexican
+  - slot_was_set:
+    - location: Delhi
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: delhi
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: mexican
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '701'
+    - budget: '701'
+  - slot_was_set:
+    - budget: '701'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: ask_email
+    entities:
+    - email: hira.ojha@gmail.com
+    - email: hira.ojha@gmail.com
+  - slot_was_set:
+    - email: hira.ojha@gmail.com
+  - action: action_send_email
+  - action: utter_confirm_email
+  - action: utter_did_that_help
+  - intent: thank
+  - action: utter_happy
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_58
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: korean
+    - location: mysore
+  - slot_was_set:
+    - cuisine: korean
+  - slot_was_set:
+    - location: mysore
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: mysore
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: invalid
+  - slot_was_set:
+    - cuisine: korean
+  - action: utter_cuisine_invalid
+  - action: utter_ask_cuisine_retry
+  - intent: deny
+  - action: utter_deny
+  - action: action_restart
+
+- story: interactive_story_68
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+    - location: bengaluru
+    - budget: '299'
+  - slot_was_set:
+    - budget: '299'
+  - slot_was_set:
+    - cuisine: chinese
+  - slot_was_set:
+    - location: bengaluru
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: bengaluru
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: valid
+  - action: utter_ask_details
+  - intent: deny
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_78
+  steps:
+  - intent: ask_restaurant
+    entities:
+    - cuisine: chinese
+    - location: hubli
+    - budget: '299'
+  - slot_was_set:
+    - budget: '299'
+  - slot_was_set:
+    - cuisine: chinese
+  - slot_was_set:
+    - location: hubli
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+  - slot_was_set:
+    - location: hubli
+  - action: action_cuisine_valid
+  - slot_was_set:
+    - cuisine_validity: valid
+  - slot_was_set:
+    - cuisine: chinese
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: invalid
+  - action: utter_search_invalid
+  - action: utter_bye
+  - action: action_restart
+
+- story: interactive_story_88
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_restaurant
+  - action: utter_ask_location
+  - intent: ask_restaurant
+    entities:
+    - location: jamnagar
+  - action: action_location_valid
+  - slot_was_set:
+    - location_validity: valid
+    - location: jamnagar
+  - action: utter_ask_cuisine
+  - intent: ask_restaurant
+    entities:
+    - cuisine: Chinese
+  - action: utter_ask_budget
+  - intent: ask_budget
+    entities:
+    - budget: '299'
+  - action: action_restaurant
+  - slot_was_set:
+    - search_validity: invalid
+  - action: utter_ask_details
+  - action: utter_search_invalid
   - action: utter_bye
   - action: action_restart

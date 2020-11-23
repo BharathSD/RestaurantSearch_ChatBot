@@ -101,6 +101,8 @@ nlu:
     - get lost and good bye
     - yes thank u good bye
     - yes thanks, bye
+    - yes thanks for the support bye
+    - no get lost and goodbye
 - intent: affirm
   examples: |
     - yes
@@ -175,6 +177,10 @@ nlu:
     - yea
     - yes thank you
     - yes sir
+    - yup please do
+    - yes it did thanks
+    - yes it did. thanks for it. Bye
+    - yes mail me
 - intent: deny
   examples: |
     - no
@@ -230,6 +236,8 @@ nlu:
     - no thank u
     - i don't think so. bye
     - no thanks bye
+    - no thanks come back when u get better
+    - no come back when u get better
 - intent: thank
   examples: |
     - Thanks
@@ -267,6 +275,7 @@ nlu:
     - brilliant thank
     - thanks muchos
     - thanks bud
+    - yes thanks for the suggestions, untill next time bye
 - intent: ask_budget
   examples: |
     - I want to eat at a place between [300](budget) and [700](budget)
@@ -278,6 +287,7 @@ nlu:
     - more than [500](budget)
     - [700](budget)
     - [299](budget)
+    - [701](budget)[701](budget)
 - intent: ask_restaurant
   examples: |
     - Oh, sorry, i'm looking in [mumbai](location)
@@ -535,16 +545,32 @@ nlu:
     - would u mind helping me with restaurants in [chennai](location) manily [italian](cuisine) with budget [300](budget) and above
     - i am hungry
     - in [bangalore]{"entity": "location", "value": "bengaluru"}
-    - [chinese](cuisine)
     - i am hungry, can u help me with [north indian](cuisine) restaurants in [hubli](location) with budget greater than [500](budget)
     - how about searching in [mysore](location) ?
     - i am looking for restaurant in [madras]{"entity": "location", "value": "chennai"}
     - [egyptian](cuisine)
     - can u find me restaurants with budget [400](budget) rs ?
     - [kolkata](location)
-    - [Italian](cuisine)
     - hi help me with [spanish](cuisine) restaurants
     - heya, find me a [vietnamese](cuisine) restaurant in [ajmer](location)
+    - looking for [spanish](cuisine) restaurants in [hubli](location)
+    - in [chennai](location)
+    - yes how about [chinese](cuisine) ?
+    - [sdb2030@gmail.com](email)
+    - looking for [vietnamise](cuisine) restaurant in [jabalpur](location) with budget [500](budget) and above
+    - hello looking for [spanish](cuisine) restaurants in [jaipur](location) the pink city and make sure the budget is less than [300](budget)
+    - i am looking for [spanish](cuisine) restaurants in [jamnagar](location)
+    - how about [american](cuisine)
+    - can u send me mail of [italian](cuisine) restaurants in [belgaum](location) with budget greater than [700](budget) to [rymugad@gmail.com](email)
+    - can u help me with [italian](cuisine) food in [hyderabad](location)
+    - [marathalli](location) food
+    - looking for restaurants in hoskote [preferably](location) [vietnamese](cuisine)
+    - looking for [spanish](cuisine) restaurants in [prayagraj](location) for budget [500](budget) and above and send the mail to [bharath.shivapuram@continental-corporation.com](email)[bharath.shivapuram@continental-corporation.com](email)
+    - can u help me with [italian](cuisine) restaurants in [china](location) ?
+    - can u help me with [italian](cuisine) restaurants in [nanjangud](location)
+    - looking for [mexican](cuisine) restaurant in [delhi]{"entity": "location", "value": "Delhi"}
+    - looking for [korean](cuisine) restaurant in [mysore](location)
+    - looking for [chinese](cuisine) restaurant in [bangalore]{"entity": "location", "value": "bengaluru"} with budget [299](budget)
 - intent: out_of_scope
   examples: |
     - please help with my ice cream it's dripping
@@ -722,6 +748,9 @@ nlu:
     - send it to [krishna.kaushikmn@gmail.com](email)
     - [zahid.baig@citrix.com](email)
     - [karthik.mn@citrix.com](email)
+    - yes mail to [rymugad@gmail.com](email)
+    - [rajasekharputha@gmail.com](email)
+    - [hira.ojha@gmail.com](email)
 - synonym: chinese
   examples: |
     - Chinese
@@ -744,19 +773,19 @@ nlu:
     - sout indian
 - synonym: bengaluru
   examples: |
+    - bangalore
     - Bangalore
     - Bengaluru
-    - bangalore
     - Bangalor
+- synonym: chennai
+  examples: |
+    - madras
+    - Chennai
 - synonym: mysore
   examples: |
     - Mysore
     - Mysuru
     - mysuru
-- synonym: chennai
-  examples: |
-    - madras
-    - Chennai
 - synonym: Kolkata
   examples: |
     - Calcutta
